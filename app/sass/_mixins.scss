@@ -1,0 +1,34 @@
+@mixin transform($args) {
+  -webkit-transform: $args;
+     -moz-transform: $args;
+      -ms-transform: $args;
+       -o-transform: $args;
+          transform: $args;
+}
+
+@mixin transition($args) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+       -o-transition: $args;
+          transition: $args;
+}
+
+@mixin border-radius($args) {
+  -webkit-border-radius: $args;
+     -moz-border-radius: $args;
+          border-radius: $args;
+}
+
+@mixin filter($args) {
+  -webkit-filter: $args;
+     -moz-filter: $args;
+      -ms-filter: $args;
+       -o-filter: $args;
+          filter: $args;
+}
+
+@mixin box-shadow( $args) {
+  -webkit-box-shadow: $args;
+     -moz-box-shadow: $args;
+          box-shadow: $args;
+}

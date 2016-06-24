@@ -1,0 +1,57 @@
+body {
+	font-family: Playball,Roboto;
+}
+h1{	
+	text-transform: uppercase;
+}
+.container{
+	max-width: 1500px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+.list-inline{	
+    display: inline-block;
+	>li{
+		float: left;
+	}
+}
+
+.img-resp {
+	max-width: 100%;
+}
+
+.clearfix:before {
+	content: '.';
+	display: block;
+	clear: both;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+}
+
+/*table styling with scroll*/
+scrollbar {
+/*  clear useragent default style*/
+   -moz-appearance: none !important;
+}
+/* buttons at two ends */
+scrollbarbutton {
+   -moz-appearance: none !important;
+}
+/* the sliding part*/
+thumb{
+   -moz-appearance: none !important;
+}
+scrollcorner {
+   -moz-appearance: none !important;
+   resize:both;
+}

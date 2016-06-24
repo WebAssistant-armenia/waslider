@@ -1,0 +1,186 @@
+.wa-showing-area {
+  width: 100%;
+  margin: 30px auto; }
+  .wa-showing-area .waSlider-arrow, .wa-showing-area .waSlider-slider {
+    float: left; }
+  .wa-showing-area img:only-child {
+    width: 100%;
+    height: 100%; }
+  .wa-showing-area.horizontal .wa-slide {
+    float: left;
+    margin-left: -100%; }
+  .wa-showing-area.vertical .wa-slide {
+    float: none;
+    width: 100%; }
+  .wa-showing-area.vertical .wa-arrow {
+    width: 30px;
+    height: 100px;
+    transform: rotate(90deg);
+    margin: 0 60px; }
+  .wa-showing-area.wa-responsive {
+    transition: all 1s; }
+  .wa-showing-area .loader {
+    max-width: 50px;
+    height: 50px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 170px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px -1px #000;
+    -webkit-animation-name: loading;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 4s;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite;
+    animation-name: loading;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; }
+    .wa-showing-area .loader:before {
+      content: '.';
+      color: transparent;
+      border-radius: 50%;
+      display: block;
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      -webkit-animation-name: dot-loading;
+      /* Chrome, Safari, Opera */
+      -webkit-animation-duration: 4s;
+      /* Chrome, Safari, Opera */
+      -webkit-animation-iteration-count: infinite;
+      animation-name: dot-loading;
+      animation-duration: 4s;
+      animation-iteration-count: infinite; }
+
+.wa-slider {
+  overflow: hidden;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 15px 30px 15px 15px;
+  margin: 60px 0; }
+  .wa-slider.show {
+    display: inline-block; }
+  .wa-slider.hide {
+    display: none; }
+  .wa-slider .wa-slide {
+    position: relative;
+    box-shadow: 0px 0px 20px -5px #000;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    box-sizing: border-box; }
+    .wa-slider .wa-slide img {
+      transition-property: all;
+      transition-timing-function: ease-in-out; }
+    .wa-slider .wa-slide.hidden img:not(:only-child) {
+      width: 0;
+      height: 0; }
+
+.wa-arrow {
+  width: 100px;
+  height: 30px;
+  margin: 0 15px;
+  border-radius: 4em;
+  border: none;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 0px 20px -5px #000;
+  transition: all 1s; }
+  .wa-arrow:hover {
+    color: #eee;
+    background-color: #1f8695; }
+
+.wa-dots {
+  clear: both;
+  display: block;
+  width: 100%;
+  margin: 30px auto; }
+  .wa-dots .dot .dot-btn {
+    width: 15px;
+    height: 15px;
+    margin: 2px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px -2px #000;
+    border: none;
+    background: transparent;
+    float: left;
+    color: #777;
+    cursor: pointer;
+    transition: all 1s; }
+    .wa-dots .dot .dot-btn.active, .wa-dots .dot .dot-btn:hover {
+      background-color: #1f8695; }
+
+.clearfix:before {
+  content: '.';
+  display: block;
+  clear: both;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden; }
+
+ul {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0; }
+
+@-webkit-keyframes loading {
+  0% {
+    background-color: #1f8695; }
+  50% {
+    background-color: #4bc3d5; }
+  100% {
+    background-color: #1f8695; } }
+/* Standard syntax */
+@keyframes loading {
+  0% {
+    background-color: #1f8695; }
+  50% {
+    background-color: #4bc3d5; }
+  100% {
+    background-color: #1f8695; } }
+@-webkit-keyframes dot-loading {
+  0% {
+    background-color: #4bc3d5;
+    max-width: 5px;
+    height: 5px;
+    top: 22.5px; }
+  50% {
+    background-color: #1f8695;
+    max-width: 50px;
+    height: 50px;
+    top: 0px; }
+  100% {
+    background-color: #4bc3d5;
+    max-width: 5px;
+    height: 5px;
+    top: 22.5px; } }
+/* Standard syntax */
+@keyframes dot-loading {
+  0% {
+    background-color: #4bc3d5;
+    max-width: 5px;
+    height: 5px;
+    top: 22.5px; }
+  50% {
+    background-color: #1f8695;
+    max-width: 50px;
+    height: 50px;
+    top: 0px; }
+  100% {
+    background-color: #4bc3d5;
+    max-width: 5px;
+    height: 5px;
+    top: 22.5px; } }
+@media screen and (max-width: 1200px) {
+  .wa-showing-area.wa-responsive {
+    transform: scale(0.9, 0.9); } }
+@media screen and (max-width: 767px) {
+  .wa-showing-area.wa-responsive {
+    transform: scale(0.7, 0.7); } }
+
+/*# sourceMappingURL=waslider.css.map */

@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WAslider</title>
+    <link rel="icon" href="images/logo-icon.png">
+    <link rel="stylesheet" href="styles/main.css">
+    
+  </head>
+  <body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="#"><img class="img-resp" src="images/logo.png"></a>
+        </div>
+        <ul class="nav-menu list-inline">
+          <li class="active"><a class="home-btn"><i class="icon-home"></i><span>Home</span></a></li>
+          <li><a class="doc-btn"><i class="icon-doc"></i><span>Documentation</span></a></li>
+          <li><a class="examples-btn"><i class="icon-examples"></i><span>Examples</span></a></li>
+          <li><a class="download-btn"><i class="icon-download"></i><span>Download</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="content clearfix">
+    <div class="container">
+      <section class="clearfix home active">
+        <div class="steps">
+          <div class="hexagon">
+            <p class="step-description">
+              <span class="step-number">1.</span> Create your slider-element in your HTML.
+            </p>
+            <pre class="code">
+...
+&lt;div class = "slider"&gt;
+  ...
+&lt;/div&gt;
+...
+            </pre>
+          </div>
+          <div class="hexagon">
+            <p class="step-description">
+              <span class="step-number">2.</span> Add it your own styles in CSS(Sass,less).
+            </p>
+            <pre class="code">
+...
+.slider {
+  ...
+}
+...
+            </pre>
+          </div>
+          <div class="hexagon">
+            <p class="step-description">
+              <span class="step-number">3.</span> Add  WAslider in your javascript file.
+            </p>
+            <pre class="code">
+
+...
+$('.slider').waslider();
+...
+
+            </pre>
+          </div>
+        </div>
+        <ul class="slider1">
+          <li class="slide-title">
+            <h3>Natural Sights of Armenia</h3>
+          </li>
+          <li>
+            <img src="images/armenia1.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia2.jpg">
+            <h3>Lorem Ipsum</h3>            
+          </li>
+          <li>
+            <img src="images/armenia3.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia4.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia5.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia6.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia7.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia8.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia9.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+          <li>
+            <img src="images/armenia10.jpg">
+            <h3>Lorem Ipsum</h3>
+          </li>
+        </ul>
+      </section>
+      <section class="clearfix doc">
+      <p class="about-waslider">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <div class="settings-list">
+        <h3>Settings</h3>
+        <ul>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>autoplay</h4>
+            <ul class="setting-submenu">
+              <li>true</li>
+              <li>false</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>speed</h4>
+            <ul class="setting-submenu">
+              <li>number(seconds*1000)</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>slidesToScroll</h4>
+            <ul class="setting-submenu">
+              <li>number</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>orientation</h4>
+            <ul class="setting-submenu">
+              <li>'h' (horizontal)</li>
+              <li>'v' (vertical)</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>marginsBtwnSlides</h4>
+            <ul class="setting-submenu">
+              <li>number</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>waResponsive</h4>
+            <ul class="setting-submenu">
+              <li>true</li>
+              <li>false</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>arrows</h4>
+            <ul class="setting-submenu">
+              <li>true</li>
+              <li>false</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>prevArrow</h4>
+            <ul class="setting-submenu">
+              <li>string(html element)</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>nextArrow</h4>
+            <ul class="setting-submenu">
+              <li>string(html element)</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>dots</h4>
+            <ul class="setting-submenu">
+              <li>true</li>
+              <li>false</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>swipe</h4>
+            <ul class="setting-submenu">
+              <li>true</li>
+              <li>false</li>
+            </ul>
+          </li>
+          <li class="setting-menu col-xxl-25 col-xl-33 col-lg-50">
+            <h4>animation</h4>
+            <ul class="setting-submenu">
+              <li>'ltr'(lefToRight)</li>
+              <li>'rtl'(rightToLeft)</li>
+              <li>'dtu'(downToUp)</li>
+              <li>'utd'(upToDown)</li>
+              <li>'cssEase'</li>
+              <li>'fromCenter'</li>
+              <li>'carousel'</li>
+              <li>'none'</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="doc-steps">
+        <div class="html-step clearfix">
+          <h3><span class="step-number">1.</span>Html</h3>
+          <p class="col-xxl-50 col-lg-100">
+            Please create your slider-element in your html.
+            Link <span>waslider.css</span> to your page in head.
+            Link <span>waslider.js</span> in footer after jquery and before your js file.
+          </p>
+          <pre class="code col-xxl-50 col-lg-100">
+... 
+&lt;head&gt;
+  ... 
+  &lt;link rel="stylesheet" href="path/waslider.css"&gt;
+  ...
+&lt;/head&gt;
+
+...
+&lt;div class = "slider"&gt; 
+  ...
+&lt;/div&gt;
+...
+
+&lt;footer&gt;
+  ...
+  &lt;!--add jquery here--&gt;
+  &lt;script src="path/wasldier.js"&lt; &gt;/script&gt;
+  &lt;!--add your js file here--&gt;
+  ...
+&lt;/footer&gt;
+...  
+          </pre>
+        </div>
+        <div class="css-step clearfix">
+          <h3><span class="step-number">2.</span>Styles</h3>
+          <p class="col-xxl-50 col-lg-100">Style it as you want.WAslider doesn't set bounds.Style free with WAslider.</p>
+          <pre class="code col-xxl-50 col-lg-100">
+            ...
+            .slider {
+              ...
+            }
+            ...
+          </pre>
+        </div>
+        <div class="js-step clearfix">
+          <h3><span class="step-number">3.</span>Script</h3>
+          <p class="col-xxl-50 col-lg-100">Add waslider plugin to your slider-element.</p>
+          <pre class="code col-xxl-50 col-lg-100">
+
+            ...
+            $('.slider').waslider();
+            ...
+
+          </pre>
+        </div>
+      </div>
+      </section>
+      <section class="clearfix examples">
+        <div class="clearfix col-xxl-100">
+          <div class="left col-xxl-50 col-lg-100">
+            <form class="slider-settings-form">
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="autoplay">autoplay:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="autoplay">
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="speed">speed:</label>
+                <input class="settings col-xxl-50 col-sm-100" id="speed" type="number" min="0" step="100" value = '3000'/>
+              </div>
+              
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="slidesToScroll">slidesToScroll:</label>
+                <input class="settings col-xxl-50 col-sm-100" id="slidesToScroll" type="number" min="1" step="1" value = '1'/>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="orienatation">orienatation:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="orienatation">
+                  <option>'h'</option>
+                  <option>'v'</option>
+                </select>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="marginsBtwnSlides">marginsBtwnSlides:</label>
+                <input class="settings col-xxl-50 col-sm-100" id="marginsBtwnSlides" type="number" min="0" step="1" value = '20'/>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="wa-responsive">waResponsive:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="wa-responsive">
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="arrows">arrows:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="arrows">
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="prevArrow">prevArrow:</label>
+                <input class="settings col-xxl-50 col-sm-100" type="text" id="prevArrow" value="'<button type='button' class='wa-arrow wa-prev'><</button>'">
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="nextArrow">nextArrow:</label>
+                <input class="settings col-xxl-50 col-sm-100" type="text" id="nextArrow" value="'<button type='button' class='wa-arrow wa-next'>></button>'">
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="dots">dots:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="dots">
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </div>
+
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="swipe">swipe:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="swipe">
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </div>
+              <div class="clearfix col-xxl-100">
+                <label class="col-xxl-50 col-sm-100" for="animation">animation:</label>
+                <select class="settings col-xxl-50 col-sm-100" id="animation">
+                  <option>'none'</option>
+                  <option>'ltr'</option>
+                  <option>'rtl'</option>
+                  <option>'dtu'</option>
+                  <option>'utd'</option>
+                  <option>'fromCenter'</option>
+                  <option>'cssEase'</option>
+                  <option>'carousel'</option>
+                </select>
+              </div>
+
+              <div>
+                <input type="button" name="create" value="Create">
+              </div>
+              
+              <div>
+                <input type="button" name="waturnof" value="waTurnOf">
+              </div>
+
+            </form>
+          </div>
+          <div class="right col-xxl-50 col-lg-100">
+            <ul class="slider-example">
+              <li>
+                <img src="images/yerevan.jpg">
+              </li>
+              <li>
+                <img src="images/paris.jpg">
+              </li>
+              <li>
+                <img src="images/venezia.jpg">
+              </li>
+              <li>
+                <img src="images/london.jpg">
+              </li>
+              <li>
+                <img src="images/sanFrancisco.jpg">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix col-xxl-100">
+          <div class="code left col-xxl-33 col-lg-100">
+            <h3>Html</h3>
+            <pre class="html-code">
+    &lt;ul class="slider-example"&gt;
+    &lt;li&gt;
+      &lt;img src="images/yerevan.jpg"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/paris.jpg"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/venezia.jpg"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/london.jpg"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/sanFrancisco.jpg"&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+            </pre>
+          </div>
+          <div class="code left col-xxl-33 col-lg-100">
+          <h3>Css</h3>
+            <pre class="css-code">
+        .slider-example {
+            width: 660px;
+        }
+
+
+        .slider-example li {
+            width: 200px;
+            height: 200px;
+            float: left;
+            box-sizing: border-box;
+            background-color: #1f8695;
+        }
+          
+            </pre>
+          </div>
+          <div class="code left col-xxl-33 col-lg-100">
+            <h3>JavaScript</h3>
+            <pre class="js-code">
+$(".slider-example").waSlider({
+  'autoplay':false,
+  'speed':3000,
+  'slidesToScroll':1,
+  'orientation':'h',
+  'marginsBtwnSlides':20,
+  'waResponsive':true,
+  'arrows':true,
+  'prevArrow':'&lt;button type="button" class="wa-arrow wa-prev"&gt;
+                     &lt;
+               &lt;/button&gt;',
+  'nextArrow':'&lt;button type="button" class="wa-arrow wa-next"&gt;
+                     &gt;
+               &lt;/button&gt;',
+  'dots':true,
+  'swipe':true,
+  'animation':'none'
+
+});
+            </pre>
+          </div>
+        </div>
+      </section>
+      <section class="clearfix download">
+        <a href="scripts/waslider.js" download="waslider.js">Download waslider.js</a>
+        <a href="styles/waslider.css" download="waslider.css">Download waslider.css</a>
+      </section>
+    </div>
+  </div>
+  <footer class="clearfix">
+    <script src="scripts/jquery/dist/jquery.js"></script>
+    <script src="scripts/waslider.js"></script>
+    <script src="scripts/main.js"></script> 
+  </footer>
+  </body>
+</html>

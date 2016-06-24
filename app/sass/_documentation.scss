@@ -1,0 +1,47 @@
+.doc {
+	h3 {
+	    font-size: 40px;
+		font-weight: bold;
+		color: #1f8695;
+		text-transform: uppercase;
+		text-shadow: 2px 2px 6px #000;
+	}
+	.doc-steps {
+		text-align: left;
+		padding: 80px;
+		.html-step,
+		.css-step,
+		.js-step {
+		    width: 100%;
+			display: inline-block;
+			padding: 30px 0;
+		}
+		h3 {
+			font-size: 30px;
+		}
+		p,pre.code {
+			padding: 20px;
+			font-size: 20px;
+			float: left;
+			box-sizing: border-box;
+		}
+		p {
+			color: #1f8695;
+            white-space: pre-line;
+            letter-spacing: 2.5px;
+            line-height: 1.5;
+            span {
+                color: #4bc3d5;
+            }
+		}
+		pre.code {
+		    border: 5px solid #1f8695;
+		    border-radius: 3em;
+		    background: rgba(31,134,149,0.6);
+		    color: #eee;
+            letter-spacing: 5px;
+		    text-align: left;
+            text-shadow: 1px 1px 1px #000;
+		}
+	}
+}

@@ -1,0 +1,100 @@
+body {
+	text-align: center;
+	background: -webkit-linear-gradient(top, #fff, rgba(55,175,215,0.2), #4bc3d5), url("../images/poly-bg.png"); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom, #fff, rgba(55,175,215,0.2), #4bc3d5), url("../images/poly-bg.png"); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom, #fff, rgba(55,175,215,0.2), #4bc3d5), url("../images/poly-bg.png"); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #fff, rgba(55,175,215,0.2), #4bc3d5), url("../images/poly-bg.png"); /* Standard syntax */  
+    background-attachment: fixed;
+    .content {
+    	padding: 70px 0;
+    }
+    section {
+    	display: none;
+    	&.active {
+    		display: block;
+    	}
+    }
+    .steps {
+    	padding-top: 80px;
+    	.hexagon {
+    		    display: inline-block;
+			    border-radius: 4em;
+			    border: 5px solid #4bc3d5;
+			    padding: 10px;
+			    background: #eee;
+			    box-shadow: 0px 0px 20px 0px #000 inset;
+			    margin: 50px;
+			    position: relative;
+		        text-align: center;
+			    width: 300px;
+			    height: 150px;
+			    &:nth-of-type(2) {
+			    	top: -50px;
+			    }
+    	}
+    	.step-description {
+		    font-size: 18px;
+		    line-height: 1.5;
+		    color: #39919f;
+		    font-weight: bold;
+		    .step-number {
+		    	font-size: 25px;
+		    }
+		}
+		.code {
+		    font-size: 14px;
+		    color: #4bc3d5;
+		    font-weight: bold;
+		}
+    }
+    .slide-number {
+    	color: #eee;
+    	font-size: 40px;
+    	text-align: center;
+    	line-height: 3;
+    }
+    .about-waslider {
+	    font-size: 18px;
+	    line-height: 1.8;
+	    padding: 40px 70px;
+    	color: #1f8695;
+    }
+    .setting-menu {
+    	display: inline-flex;
+	    flex-direction: column;
+	    text-align: center;
+	    justify-content: center;
+	    border-radius: 4em;
+	    border: 5px solid #4bc3d5;
+	    padding: 5px 10px 15px;
+	    background: #eee;
+	    box-shadow: 0px 0px 20px 0px #000 inset;
+	    margin: 50px;
+	    text-align: center;
+	    max-width: 230px;
+	    height: 22px;
+	    overflow: hidden;
+	    transition-property: height;
+	    transition-duration: 0.3s;
+	    h4 {
+			font-size: 20px;
+		    color: #1f8695;
+		    line-height: 2.4;
+    	}
+    	.setting-submenu {
+    		display: none;
+    		li{
+    			color: #4bc3d5;
+    			font-size: 18px;
+    		}
+    	}
+    	&:hover {
+    		height: 170px;
+	    	cursor: pointer;
+	    	.setting-submenu {
+	    		display: block;
+	    	}
+    	}
+    }
+    
+}
