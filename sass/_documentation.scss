@@ -28,9 +28,11 @@
 		p {
 			color: #1f8695;
             white-space: pre-line;
-            letter-spacing: 2.5px;
             line-height: 1.5;
-            span {
+            a,
+            a:hover,
+            a:active,
+            a:focus {
                 color: #4bc3d5;
             }
 		}
@@ -39,7 +41,6 @@
 		    border-radius: 3em;
 		    background: rgba(31,134,149,0.6);
 		    color: #eee;
-            letter-spacing: 5px;
 		    text-align: left;
             text-shadow: 1px 1px 1px #000;
 		}

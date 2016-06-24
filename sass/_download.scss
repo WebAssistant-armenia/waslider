@@ -7,17 +7,17 @@
         width: 100%;
         display: block;
         margin: 10px auto;
-        font-family: Playball;
         font-size: 20px;
         letter-spacing: 2px;
         transition: font-size 1s;
         cursor: pointer;
-        padding: 20px;
+        padding: 30px 20px;
         border-radius: 3em;
         background: rgba(31, 134, 149, 0.6);
         color: #eee;
         box-sizing: border-box;
         outline: none;
+        line-height: 0;
         &:hover {
             font-size: 22px;
         }
