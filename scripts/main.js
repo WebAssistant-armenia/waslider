@@ -60,7 +60,7 @@ $(document).ready(function(){
 
 
 	$(".slider1").waSlider({
-		'autoplay':false,
+		'autoplay':true,
 		'speed':4000,
 		'slidesToScroll':1,
 		'animation':'cssEase',
@@ -70,9 +70,8 @@ $(document).ready(function(){
 		'waResponsive':true
 
 	});
-/*	$((".slider1")).waSlider('waTurnOf');*/
 	var userSettings = {
-		'autoplay':false,
+		'autoplay':true,
 		'speed':3000,
 		'slidesToScroll':1,
 		'orientation':'h',
@@ -85,121 +84,54 @@ $(document).ready(function(){
 		'swipe':true,
 		'animation':'none'
 
+	},
+	setSettings = function () {
+		return {
+		'autoplay':($('#autoplay').val()=='true')?  true:false,
+		'speed':parseInt($('#speed').val()),
+		'slidesToScroll':parseInt($('#slidesToScroll').val()),
+		'orientation':$('#orientation').val(),
+		'marginsBtwnSlides':parseInt($('#marginsBtwnSlides').val()),
+		'waResponsive':($('#wa-responsive').val()=='true')?  true:false,
+		'arrows':($('#arrows').val()=='true')?  true:false,
+		'prevArrow':$('#prevArrow').val(),
+		'nextArrow':$('#nextArrow').val(),
+		'dots':($('#dots').val()=='true')?  true:false,
+		'swipe':($('#swipe').val()=='true')?  true:false,
+		'animation':$('#animation').val()
+
+		};
 	};
+	console.log(userSettings);
 	$(".slider-example").waSlider(userSettings);
 
-	/*$(".slider-none-h").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'none',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'h',
-		'waResponsive':true
+	$('.waturnof').click( function () {
+		$(".slider-example").waSlider('waTurnOf');
+		$(this).prop("disabled",true);
+	})
+	$('.create').click( function () {
+		userSettings = setSettings();
+		console.log(userSettings);
+		$(".slider-example").waSlider('waTurnOf');
+		console.log(userSettings.orientation);
+		$(".slider-example").waSlider(userSettings);
+		$('.waturnof').prop("disabled",false);
+		$('.js-code').text(
+			"$('.slider-example').waSlider({\n"+
+			"   'autoplay':"+ userSettings.autoplay+',\n'+
+			"   'speed':"+userSettings.speed+',\n'+
+			"   'slidesToScroll':"+userSettings.slidesToScroll+',\n'+
+			"   'orientation':"+userSettings.orientation+',\n'+
+			"   'marginsBtwnSlides':"+userSettings.marginsBtwnSlides+',\n'+
+			"   'waResponsive':"+userSettings.waResponsive+',\n'+
+			"   'arrows':"+userSettings.arrows+',\n'+
+			"   'prevArrow':"+userSettings.prevArrow+',\n'+
+			"   'nextArrow':"+userSettings.nextArrow+',\n'+
+			"   'dots':"+userSettings.dots+',\n'+
+			"   'swipe':"+userSettings.swipe+',\n'+
+			"   'animation':"+userSettings.animation+',\n'+
+			"});"
+		)
 
-	});
-	$(".slider-none-v").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'none',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'v',
-		'waResponsive':true
-
-	});
-
-	$(".slider-ltr-h").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'ltr',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'h',
-		'waResponsive':true
-
-	});
-	$(".slider-ltr-v").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'ltr',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'v',
-		'waResponsive':true
-
-	});
-
-	$(".slider-rtl-h").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'rtl',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'h',
-		'waResponsive':true
-
-	});
-	$(".slider-rtl-v").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'rtl',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'v',
-		'waResponsive':true
-
-	});
-
-	$(".slider-dtu-h").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'dtu',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'h',
-		'waResponsive':true
-
-	});
-	$(".slider-dtu-v").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'dtu',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'v',
-		'waResponsive':true
-
-	});
-
-	$(".slider-utd-h").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'utd',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'h',
-		'waResponsive':true
-
-	});
-	$(".slider-utd-v").waSlider({
-		'autoplay':false,
-		'speed':4000,
-		'slidesToScroll':1,
-		'animation':'utd',
-		'dots':true,
-		'arrows': true,
-		'orientation': 'v',
-		'waResponsive':true
-
-	});*/
+	})
 });

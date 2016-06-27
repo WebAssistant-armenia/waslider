@@ -48,6 +48,12 @@
     input[name="waturnof"] {
         background: transparent;
         color: #1f8695;
+        &[disabled] {
+            opacity: 0.5;
+            &:hover {
+                transform:scale(1,1);
+            }
+        }
     }
     .slider-example {
         width: 660px;

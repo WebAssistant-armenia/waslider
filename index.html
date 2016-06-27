@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WAslider</title>
     <link rel="icon" href="images/logo-icon.png">
+    <link rel="stylesheet" href="styles/waslider.css">
     <link rel="stylesheet" href="styles/main.css">
     
   </head>
@@ -225,7 +226,7 @@ $('.slider').waslider();
           <h3><span class="step-number">1.</span>Html</h3>
           <p class="col-xxl-50 col-lg-100">
             Please create your slider-element in your html.
-            Link <a href="scripts/waslider.js" download="waslider.js">waslider.js</a>to your page in head.
+            Link <a href="scripts/waslider.js" download="waslider.js">waslider.js</a> to your page in head.
             Link <a href="styles/waslider.css" download="waslider.css">waslider.css</a> in footer after jquery and before your js file.
           </p>
           <pre class="code col-xxl-50 col-lg-100">
@@ -283,8 +284,8 @@ $('.slider').waslider();
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="autoplay">autoplay:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="autoplay">
-                  <option>true</option>
-                  <option>false</option>
+                  <option val='true'>true</option>
+                  <option val='false'>false</option>
                 </select>
               </div>
 
@@ -295,14 +296,14 @@ $('.slider').waslider();
               
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="slidesToScroll">slidesToScroll:</label>
-                <input class="settings col-xxl-50 col-sm-100" id="slidesToScroll" type="number" min="1" step="1" value = '1'/>
+                <input class="settings col-xxl-50 col-sm-100" id="slidesToScroll" type="number" min="1" max="2" step="1" value = '1'/>
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="orienatation">orienatation:</label>
-                <select class="settings col-xxl-50 col-sm-100" id="orienatation">
-                  <option>'h'</option>
-                  <option>'v'</option>
+                <select class="settings col-xxl-50 col-sm-100" id="orientation">
+                  <option val='h'>h</option>
+                  <option val='v'>v</option>
                 </select>
               </div>
 
@@ -314,64 +315,64 @@ $('.slider').waslider();
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="wa-responsive">waResponsive:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="wa-responsive">
-                  <option>true</option>
-                  <option>false</option>
+                  <option val='true'>true</option>
+                  <option val='false'>false</option>
                 </select>
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="arrows">arrows:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="arrows">
-                  <option>true</option>
-                  <option>false</option>
+                  <option val='true'>true</option>
+                  <option val='false'>false</option>
                 </select>
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="prevArrow">prevArrow:</label>
-                <input class="settings col-xxl-50 col-sm-100" type="text" id="prevArrow" value="'<button type='button' class='wa-arrow wa-prev'><</button>'">
+                <input class="settings col-xxl-50 col-sm-100" type="text" id="prevArrow" value="<button type='button' class='wa-arrow wa-prev'><</button>">
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="nextArrow">nextArrow:</label>
-                <input class="settings col-xxl-50 col-sm-100" type="text" id="nextArrow" value="'<button type='button' class='wa-arrow wa-next'>></button>'">
+                <input class="settings col-xxl-50 col-sm-100" type="text" id="nextArrow" value="<button type='button' class='wa-arrow wa-next'>></button>">
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="dots">dots:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="dots">
-                  <option>true</option>
-                  <option>false</option>
+                  <option val='true'>true</option>
+                  <option val='false'>false</option>
                 </select>
               </div>
 
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="swipe">swipe:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="swipe">
-                  <option>true</option>
-                  <option>false</option>
+                  <option val='true'>true</option>
+                  <option val='false'>false</option>
                 </select>
               </div>
               <div class="clearfix col-xxl-100">
                 <label class="col-xxl-50 col-sm-100" for="animation">animation:</label>
                 <select class="settings col-xxl-50 col-sm-100" id="animation">
-                  <option>'none'</option>
-                  <option>'ltr'</option>
-                  <option>'rtl'</option>
-                  <option>'dtu'</option>
-                  <option>'utd'</option>
-                  <option>'fromCenter'</option>
-                  <option>'cssEase'</option>
-                  <option>'carousel'</option>
+                  <option val='none'>none</option>
+                  <option val='ltr'>ltr</option>
+                  <option val='rtl'>rtl</option>
+                  <option val='dtu'>dtu</option>
+                  <option val='utd'>utd</option>
+                  <option val='fromCenter'>fromCenter</option>
+                  <option val='cssEase'>cssEase</option>
+                  <option val='carousel'>carousel</option>
                 </select>
               </div>
 
               <div>
-                <input type="button" name="create" value="Create">
+                <input class="create" type="button" name="create" value="Create">
               </div>
               
               <div>
-                <input type="button" name="waturnof" value="waTurnOf">
+                <input class="waturnof" type="button" name="waturnof" value="waTurnOf">
               </div>
 
             </form>
@@ -463,6 +464,8 @@ $(".slider-example").waSlider({
       <section class="clearfix download">
         <a href="scripts/waslider.js" download="waslider.js">Download waslider.js</a>
         <a href="styles/waslider.css" download="waslider.css">Download waslider.css</a>
+        <h3>Or</h3>
+        <a class="download-zip" href="waslider.zip" download="waslider.zip">Download waslider.zip</a>
       </section>
     </div>
   </div>

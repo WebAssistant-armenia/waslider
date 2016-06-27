@@ -29,11 +29,13 @@
 			color: #1f8695;
             white-space: pre-line;
             line-height: 1.5;
-            a,
-            a:hover,
-            a:active,
-            a:focus {
-                color: #4bc3d5;
+            a{
+                color: #4bc3d5;	                
+	            &:hover,
+	            &:active,
+	            &:focus {
+                	text-decoration: underline;
+                }
             }
 		}
 		pre.code {

@@ -168,7 +168,11 @@
 				}
 			};
 
-
+			var checkingAutoplay = function (t) {
+				if (settings=='waTurnOf' || !settings.autoplay) {
+					clearInterval(t);
+				}
+			}
 
 
 			/**
@@ -193,61 +197,75 @@
 						}
 					},
 					sliderList: function ($conf) {
-						var i = 0;
-						 for (i = 0; i < $conf.size; ++i) {
-						 	$conf.$sliderList.push($($conf.sliderList[i]));
-						 	$conf.$sliderList[i].index = i;
-						 }
-						 for (var i = 0; i < $conf.$sliderList.length; ++i) {
-						 	$conf.$sliderList[i].addClass("wa-slide");
-			 			 }
+						if($conf.$waSlider.hasClass('wa-slider')) {
+							var i = 0;
+							for (i = 0; i < $conf.size; ++i) {
+							 	$conf.$sliderList.push($($conf.sliderList[i]));
+							 	$conf.$sliderList[i].index = i;
+							}
+							for (var i = 0; i < $conf.$sliderList.length; ++i) {
+							 	$conf.$sliderList[i].addClass("wa-slide");
+				 			}
+						}
 					},
 					dots: function ($conf) {
-						$conf.$showingArea.append("<ul class='wa-dots clearfix'></ul>");
-						if($($conf.$showingArea[0].children[$conf.$showingArea[0].children.length-1]).hasClass('wa-dots')){
-							$conf.$waSliderDots = $($conf.$showingArea[0].children[$conf.$showingArea[0].children.length-1]);
-						}
-						$conf.$waSliderDots.css("max-width",$conf.size*20);
-						for (var i = 0; i < $conf.size; ++i) {
-							$conf.$waSliderDots.append("<li class='dot'><button class='dot-btn'></button</li>");
-							$conf.$dots[i] = $conf.$waSliderDots[0].children[i].children[0];
-							$conf.$dots[i].index = $conf.$sliderList[i].index;
-						}
+						if($conf.$waSlider.hasClass('wa-slider')) {
+							$conf.$showingArea.append("<ul class='wa-dots clearfix'></ul>");
+							if($($conf.$showingArea[0].children[1]).hasClass('wa-dots')){
+								$conf.$waSliderDots = $($conf.$showingArea[0].children[1]);
+							}						
+							$conf.$waSliderDots.css("max-width",$conf.size*20);
+							for (var i = 0; i < $conf.size; ++i) {
+								$conf.$waSliderDots.append("<li class='dot'><button class='dot-btn'></button</li>");
+								$conf.$dots[i] = $conf.$waSliderDots[0].children[i].children[0];
+								$conf.$dots[i].index = $conf.$sliderList[i].index;
+							}
 
-						for (var i = 0; i < $conf.size; ++i) {
-							$($conf.$dots[i]).click(function(){
-								$(this).addClass("active");
-								$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList,this.index,$conf);
+							for (var i = 0; i < $conf.size; ++i) {
+								$($conf.$dots[i]).click(function(){
+									$(this).addClass("active");
+									$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList,this.index,$conf);
+									waSlider.slider.showSlides($conf);
+								});
+							}
+						}
+					},
+					arrows: function ($conf) {
+						if($conf.$waSlider.hasClass('wa-slider')) {
+							$conf.$showingArea.append(settings.prevArrow);
+							$conf.$showingArea.append(settings.nextArrow);
+							if($($conf.$showingArea[0].children[1]).hasClass('wa-dots')){
+								$conf.$waSliderPrev = $($conf.$showingArea[0].children[2]);
+								$conf.$waSliderNext = $($conf.$showingArea[0].children[3]);
+							}
+							else {
+								$conf.$waSliderPrev = $($conf.$showingArea[0].children[1]);
+								$conf.$waSliderNext = $($conf.$showingArea[0].children[2]);
+							}
+							$conf.$waSliderPrev.click( function () {
+								var index = $conf.$sliderList[0].index - settings.slidesToScroll;
+								prevIndex = (index >= 0)? index:$conf.size + index ;
+								$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, prevIndex, $conf);
+								waSlider.slider.showSlides($conf);
+							});
+							$conf.$waSliderNext.click( function () {
+								var nextIndex = ($conf.$sliderList[0].index + settings.slidesToScroll) % $conf.size;
+								$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, nextIndex, $conf);
 								waSlider.slider.showSlides($conf);
 							});
 						}
 					},
-					arrows: function ($conf) {
-						$conf.$waSlider.before(settings.prevArrow);
-						$conf.$waSlider.before(settings.nextArrow);
-						$conf.$waSliderPrev = $($conf.$showingArea[0].children[0]);
-						$conf.$waSliderNext = $($conf.$showingArea[0].children[1]);
-						$conf.$waSliderPrev.click( function () {
-							var index = $conf.$sliderList[0].index - settings.slidesToScroll;
-							prevIndex = (index >= 0)? index:$conf.size + index ;
-							$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, prevIndex, $conf);
-							waSlider.slider.showSlides($conf);
-						});
-						$conf.$waSliderNext.click( function () {
-							var nextIndex = ($conf.$sliderList[0].index + settings.slidesToScroll) % $conf.size;
-							$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, nextIndex, $conf);
-							waSlider.slider.showSlides($conf);
-						});
-					},
 					orientation: function($conf) {
-						if (settings.orientation == 'v') {
-							$conf.$showingArea.addClass('vertical');
-							for (var i = 0; i < $conf.$sliderList.length; i++) {
-								$conf.$sliderList[i].css({'margin-top':($conf.$sliderList[i].height()+settings.marginsBtwnSlides)*(-1)});								
+						if($conf.$waSlider.hasClass('wa-slider')) {
+							if (settings.orientation == 'v') {
+								$conf.$showingArea.addClass('vertical');
+								for (var i = 0; i < $conf.$sliderList.length; i++) {
+									$conf.$sliderList[i].css({'margin-top':($conf.$sliderList[i].height()+settings.marginsBtwnSlides)*(-1)});								
+								}
 							}
-						}
-						else { 
-							$conf.$showingArea.addClass('horizontal');
+							else { 
+								$conf.$showingArea.addClass('horizontal');
+							}
 						}
 					}
 				},
@@ -332,8 +350,11 @@
 							
 					},
 					showSlides: function ($conf) {
-						console.log($conf.$waSlider.hasClass('wa-slider'));
-						if($conf.$waSlider.hasClass('wa-slider')){
+						if($conf.$waSlider.hasClass('wa-slider')){							
+							console.log($conf.waSliderTimer);
+							if(settings.autoplay==false) {
+								clearInterval($conf.waSliderTimer);
+							}
 							var t = false,
 						    widthSum = 0, i,
 						    left = 100,
@@ -406,11 +427,14 @@
 						
 					},
 					autoplay: function ($conf) {
-						$conf.waSliderTimer = setInterval((function(){
-							var nextIndex = ($conf.$sliderList[0].index + settings.slidesToScroll) % $conf.size;
-							$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, nextIndex, $conf);
-							waSlider.slider.showSlides($conf);
-						}),settings.speed);
+						if($conf.$waSlider.hasClass('wa-slider')) {
+							$conf.waSliderTimer = setInterval((function(){
+								checkingAutoplay($conf.waSliderTimer);
+								var nextIndex = ($conf.$sliderList[0].index + settings.slidesToScroll) % $conf.size;
+								$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, nextIndex, $conf);
+								waSlider.slider.showSlides($conf);
+							}),settings.speed);
+						}
 					},					
 				},
 				imgPreloader: function (pictureUrls, callback, $conf) {
@@ -434,18 +458,10 @@
 					if(settings == 'waTurnOf') {
 						conf.$showingArea = $(conf.$waSlider[0].parentElement);
 						//conf.$showingArea[0].remove();
-						if($(conf.$showingArea[0].children[conf.$showingArea[0].children.length-1]).hasClass('wa-dots')){
-							conf.$waSliderDots = $(conf.$showingArea[0].children[conf.$showingArea[0].children.length-1]);
-						}
-						if($(conf.$showingArea[0].children[0]).hasClass('wa-arrow')){							
-							conf.$waSliderPrev = $(conf.$showingArea[0].children[0]);
-							conf.$waSliderNext = $(conf.$showingArea[0].children[1]);
-						}
-						waSlider.set.images(conf);
-						waSlider.imgPreloader(conf.$imagesSrc, waSlider.waTurnOf, conf);
+						waSlider.waTurnOf(conf);
 					}
 					else {	
-						waSlider.set.showingArea(conf);						
+						waSlider.set.showingArea(conf);
 						waSlider.set.images(conf);
 						waSlider.imgPreloader(conf.$imagesSrc, waSlider.buildSlider, conf);
 					}
@@ -466,41 +482,27 @@
 					if (settings.autoplay || (!settings.dots && !settings.arrows)) {
 						waSlider.slider.autoplay($conf);
 					}
+					else {
+						clearInterval($conf.waSliderTimer);
+					}
+
 					if(settings.swipe) {
 						waSlider.slider.slidesOnSwipe($conf);
 					}
 				},
 				waTurnOf: function($conf) {
 					$('.wa-loader').remove();
-					console.log($($conf.$waSlider[0]));
-					$conf.$showingArea.before($($conf.$waSlider[0]));
-					if($conf.$waSlider.parent().hasClass('wa-showing-area')) {
-						console.log($conf.$waSliderPrev,$conf.$waSliderNext,$conf.$waSliderDots);
-						/*if($conf.$waSliderPrev){
-							$conf.$waSliderPrev.remove();
-						}
-						if($conf.$waSliderNext){
-							$conf.$waSliderNext.remove();
-						}
-						if($conf.$waSliderDots){
-							$conf.$waSliderDots.remove();
-						}*/
-						/*$('.delete').remove();*/
-						/*$conf.$waSlider.removeClass('wa-slider');
-						$conf.$waSlider.removeClass('show');
-						for (var i = 0; i < $conf.$waSlider[0].children.length; i++) {
-							$($conf.$waSlider[0].children[i]).removeClass('wa-slide');
-							$($conf.$waSlider[0].children[i]).removeClass('visible');
-							$($conf.$waSlider[0].children[i]).removeClass('hidden');
-							$($conf.$waSlider[0].children[i]).removeClass('first-slide');
-							$($conf.$waSlider[0].children[i]).removeClass('last-slide');
-							$($conf.$waSlider[0].children[i]).css({'opacity':1});
-						}
-						var a = $($conf.$waSlider[0]);
-						$conf.$showingArea.before(a);*/
-						/*$conf.$showingArea.remove();*/
+					$conf.$showingArea.replaceWith($conf.$waSlider);
+					$conf.$waSlider.removeClass('wa-slider show');
+					for (var i = 0; i < $conf.$waSlider[0].children.length; i++) {
+						$($conf.$waSlider[0].children[i]).removeClass('wa-slide');
+						$($conf.$waSlider[0].children[i]).removeClass('visible');
+						$($conf.$waSlider[0].children[i]).removeClass('hidden');
+						$($conf.$waSlider[0].children[i]).removeClass('first-slide');
+						$($conf.$waSlider[0].children[i]).removeClass('last-slide');
 					}
-
+					clearInterval($conf.waSliderTimer);
+					
 
 				}
 			};

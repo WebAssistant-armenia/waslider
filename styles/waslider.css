@@ -58,7 +58,7 @@
   text-align: center;
   box-sizing: border-box;
   padding: 15px 30px 15px 15px;
-  margin: 60px 0; }
+  margin: 0; }
   .wa-slider.show {
     display: inline-block; }
   .wa-slider.hide {
