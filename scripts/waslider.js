@@ -1,24 +1,24 @@
+
 (function($)
 	{
 		$.fn.waSlider = function ($customSettings) {
 			var slider = this;
 
 			/**
-			 * @typedef {Object} defaultSettings
-			 * @property {bool} autoplay slider's playing auto if choosen true
+			 * @typedef  {Object} defaultSettings
+			 * @property {bool}   autoplay slider's playing auto if choosen true
 			 * @property {string} orientation may be 'h' - horizontal,'v'- vertical
 			 * @property {number} slidesToShow how many slides have to be shown
 			 * @property {number} slidesToScroll how many slides have to be scrolled on clicking next or prev buttons or on autoplay
 			 * @property {number} speed how many seconds to show slides on autoplay
-			 * @property {bool} dots  if it's true there are showing dots
-			 * @property {bool} arrows if it's true there are showing arrows
-			 * @property {bool} swipe if it's true you can sliding with swipe too
+			 * @property {bool}   dots  if it's true there are showing dots
+			 * @property {bool}   arrows if it's true there are showing arrows
+			 * @property {bool}   swipe if it's true you can sliding with swipe too
 			 * @property {string} prevArrow element wich must be the prev button
 			 * @property {string} nextArrow element wich must be the next button
 			 * @property {string} animation animation type,it may be 'ltr'(lefToRight),'rtl'(rightToLeft),'dtu'(downToUp),
 			 *														 'utd'(upToDown),'cssEase','fromCenter','carousel','none' 
 			 */
-
 			var settings,
 			    defaultSettings = {
 					'autoplay': false,
@@ -35,9 +35,12 @@
 		            'animation': 'ltr',
 				},
 				configs = [];
+
 			for (var i = 0; i < slider.length; ++i) {
 				configs[i] = {
+					sliderIndex: i,
 					$waSlider: $(slider[i]),
+					$wasliderWidth:null,
 					sliderList: slider[i].children,
 					size: slider[i].children.length,
 					$sliderList:  [],
@@ -50,8 +53,18 @@
 					$hidden: [],
 					$imagesSrc: [],
 					$loader: '<div class="wa-loader"></div>',
-					$waSliderTimer: null,
+					waSliderTimer: null,
+				};
+				if(!slider[i].setWaslider) {
+					slider[i].calledCount = 1;
+					slider[i].configs = [configs[i]];
 				}
+				else {
+					slider[i].calledCount++;
+					var j = slider[i].calledCount;
+					slider[i].configs.push(configs[i]);
+				}
+				slider[i].setWaslider = true;
 			}
 
 			
@@ -59,9 +72,8 @@
 		
 
 
-			/**     
-			 *     Animations    
-			 */
+			/**Animations*/
+
 			var leftToRight = function ($conf) {
 				for (var i = 0; i < $conf.$hidden.length; i++) {
 					$conf.$hidden[i].css({"left":$conf.$hidden[i].width()});
@@ -104,7 +116,8 @@
 					}
 				}
 				for (var i = 0; i < $conf.$hidden.length; i++) {
-					$conf.$hidden[i].css({"top":$conf.$hidden[i].height()*(-1)});
+					$conf.$hidden[i].css({"top":$conf.$waSlider.outerHeight()*(-1)});
+
 				}
 			};
 			var fromCenter = function ($conf) {
@@ -157,6 +170,9 @@
 				};
 			
 			var animate = function(animationName, $conf) {
+				for (var i = 0; i < $conf.$sliderList.length; i++) {
+					$conf.$sliderList[i].css({'-ms-transform': 'scale(1,1)','-webkit-transform':' scale(1,1)','transform':' scale(1,1)','top':0,'opacity':1});
+				}
 				if(animationName != 'none'){
 					if (animations.hasOwnProperty(animationName)) {
 						animations[animationName]($conf);
@@ -168,23 +184,39 @@
 				}
 			};
 
-			var checkingAutoplay = function (t) {
-				if (settings=='waTurnOf' || !settings.autoplay) {
-					clearInterval(t);
+			/**
+			 * Calculate width of element with px
+			 * @param {object} el
+			 * @return {Number} width
+			 */
+			var calcWasWidthPx = function (el) {
+				var width = el.css('width');
+				if(width.substr(width.length-1) == '%'){
+					width = parseInt(width)*0.01*calcWasWidthPx(el.parent());
+					return width;
+				}
+				else if(width.substr(width.length-2) == 'px') {
+					return parseInt(width);
 				}
 			}
 
 
 			/**
-			 * Slider
+			 * @typedef  {Object}   waSlider
+			 * @property {object}   set consists of slider's setting functions
+			 * @property {object}   slider consists of slider's functions such as slideToIndex,slidesOnSwipe,showSlides and autoplay
+			 * @property {function} imgPreloader 
+			 * @property {function} init waslider's constructor
+			 * @property {function} buildSlider bulding of slider according userSettings
+			 * @property {function} waTurnOf waslider's destructure
 			 */
 			var waSlider =  {
 				set: {
 					showingArea: function ($conf) {
+						$conf.$wasliderWidth = calcWasWidthPx($conf.$waSlider);	
 						$conf.$waSlider.addClass("wa-slider");
 						$conf.$waSlider.wrap("<div class='wa-showing-area clearfix'></div>");
 						$conf.$showingArea = $($conf.$waSlider[0].parentElement);
-						$conf.$showingArea.css({"max-width":$conf.$waSlider.width()});
 						$conf.$showingArea.append($conf.$loader);
 						$conf.$waSlider.addClass('hide');
 						if(settings.waResponsive) {
@@ -260,7 +292,7 @@
 							if (settings.orientation == 'v') {
 								$conf.$showingArea.addClass('vertical');
 								for (var i = 0; i < $conf.$sliderList.length; i++) {
-									$conf.$sliderList[i].css({'margin-top':($conf.$sliderList[i].height()+settings.marginsBtwnSlides)*(-1)});								
+									$conf.$sliderList[i].css({'margin-top':($conf.$sliderList[i].height()+settings.marginsBtwnSlides)*(-1)});
 								}
 							}
 							else { 
@@ -292,6 +324,12 @@
 							 	arr[i].contents().find('img').css({'transition-duration':settings.speed*0.001/2+'s'});
 							 	arr[i].contents().filter('img').css({'transition-duration':settings.speed*0.001/2+'s'});
 						 	}
+						 	else {						 		
+							 	arr[i].css({'transition-duration':'0s'});
+							 	arr[i].contents().find('img').css({'transition-duration':'0s'});
+							 	arr[i].contents().filter('img').css({'transition-duration':'0s'});
+						 	}
+
 			 			 }
 
 						if(arr[0].index>arr[$conf.slidesToShow-1].index){
@@ -350,11 +388,7 @@
 							
 					},
 					showSlides: function ($conf) {
-						if($conf.$waSlider.hasClass('wa-slider')){							
-							console.log($conf.waSliderTimer);
-							if(settings.autoplay==false) {
-								clearInterval($conf.waSliderTimer);
-							}
+						if($conf.$waSlider.hasClass('wa-slider')){
 							var t = false,
 						    widthSum = 0, i,
 						    left = 100,
@@ -418,24 +452,24 @@
 							else {
 								for (var i = 0; i < $conf.$sliderList.length; i++) {
 									$conf.$sliderList[i].css({'left': left + '%'});
-									left +=  ($conf.$sliderList[i].outerWidth()+margin)/$conf.$waSlider.width() * 100;
+									margin = settings.marginsBtwnSlides/$conf.$wasliderWidth*100;
+									left += ($conf.$sliderList[i].outerWidth() + margin)/$conf.$waSlider.width() * 100;
 								}
 							}
 							animate(settings.animation, $conf);
-
 						}						
-						
 					},
 					autoplay: function ($conf) {
-						if($conf.$waSlider.hasClass('wa-slider')) {
-							$conf.waSliderTimer = setInterval((function(){
-								checkingAutoplay($conf.waSliderTimer);
+						slider[$conf.sliderIndex].configs[slider[$conf.sliderIndex].configs.length-1].waSliderTimer = setInterval((function(){
+							if($conf.$waSlider.hasClass('wa-slider') && !(settings=="waTurnOf") && !(settings.autoplay == 'false')) {
 								var nextIndex = ($conf.$sliderList[0].index + settings.slidesToScroll) % $conf.size;
 								$conf.$sliderList = waSlider.slider.slideToIndex($conf.$sliderList, nextIndex, $conf);
 								waSlider.slider.showSlides($conf);
-							}),settings.speed);
-						}
-					},					
+
+							}
+						}),settings.speed);
+						
+					},
 				},
 				imgPreloader: function (pictureUrls, callback, $conf) {
 				    var i,
@@ -456,11 +490,12 @@
 				},
 				init: function (conf) {
 					if(settings == 'waTurnOf') {
-						conf.$showingArea = $(conf.$waSlider[0].parentElement);
-						//conf.$showingArea[0].remove();
-						waSlider.waTurnOf(conf);
+						if($(conf.$waSlider[0].parentElement).hasClass('wa-showing-area')) {
+							conf.$showingArea = $(conf.$waSlider[0].parentElement);
+							waSlider.waTurnOf(conf);
+						}
 					}
-					else {	
+					else {
 						waSlider.set.showingArea(conf);
 						waSlider.set.images(conf);
 						waSlider.imgPreloader(conf.$imagesSrc, waSlider.buildSlider, conf);
@@ -482,10 +517,6 @@
 					if (settings.autoplay || (!settings.dots && !settings.arrows)) {
 						waSlider.slider.autoplay($conf);
 					}
-					else {
-						clearInterval($conf.waSliderTimer);
-					}
-
 					if(settings.swipe) {
 						waSlider.slider.slidesOnSwipe($conf);
 					}
@@ -501,7 +532,13 @@
 						$($conf.$waSlider[0].children[i]).removeClass('first-slide');
 						$($conf.$waSlider[0].children[i]).removeClass('last-slide');
 					}
-					clearInterval($conf.waSliderTimer);
+					if(slider[$conf.sliderIndex].configs[slider[$conf.sliderIndex].configs.length-2].waSliderTimer) {
+						for(var i = 0; i < slider[$conf.sliderIndex].configs.length-1; i++) {
+							if(slider[$conf.sliderIndex].configs[i].waSliderTimer!=null) {
+								clearInterval(slider[$conf.sliderIndex].configs[i].waSliderTimer);
+							}
+						}
+					}
 					
 
 				}

@@ -313,12 +313,13 @@ header {
       width: 100%;
       padding: 20px;
       background: url(../images/armenia1.jpg) no-repeat;
-      background-size: 100%; }
+      background-size: 100% 100%; }
       .home .slider1 li.slide-title h3 {
         font-size: 60px;
         color: #eee;
         line-height: 2.4; }
     .home .slider1 li img {
+      width: 370px;
       height: 160px;
       transition: all 1s; }
     .home .slider1 li h3 {
@@ -368,10 +369,10 @@ header {
     padding: 20px;
     font-size: 20px;
     float: left;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    white-space: pre-line; }
   .doc .doc-steps p {
     color: #1f8695;
-    white-space: pre-line;
     line-height: 1.5; }
     .doc .doc-steps p a {
       color: #4bc3d5; }
@@ -434,9 +435,9 @@ header {
       .examples input[name="waturnof"][disabled]:hover {
         transform: scale(1, 1); }
   .examples .slider-example {
-    width: 660px; }
+    width: 100%; }
     .examples .slider-example li {
-      width: 200px;
+      width: 33%;
       height: 200px; }
   .examples .code {
     overflow-y: hidden;
@@ -445,6 +446,7 @@ header {
     box-sizing: border-box;
     box-shadow: 0px 0px 40px 10px #1f8695 inset;
     padding: 40px 5px 40px 40px;
+    font-size: 16px;
     letter-spacing: 1px; }
     .examples .code h3 {
       color: #1F86D3;
@@ -455,6 +457,19 @@ header {
       overflow-y: scroll;
       text-align: left;
       color: #1F86D3; }
+    .examples .code scrollbar {
+      -moz-appearance: none !important;
+      background: lime !important; }
+    .examples .code thumb, .examples .code scrollbarbutton {
+      -moz-appearance: none !important;
+      background-color: blue !important; }
+    .examples .code thumb:hover, .examples .code scrollbarbutton:hover {
+      -moz-appearance: none !important;
+      background-color: red !important; }
+    .examples .code scrollbarbutton {
+      display: none !important; }
+    .examples .code scrollbar[orient="vertical"] {
+      min-width: 15px !important; }
     .examples .code ::-webkit-scrollbar {
       width: 4px; }
     .examples .code ::-webkit-scrollbar-track {
@@ -530,17 +545,18 @@ body {
       margin: 50px;
       position: relative;
       text-align: center;
-      width: 300px;
+      width: 260px;
       height: 150px; }
       body .steps .hexagon:nth-of-type(2) {
         top: -50px; }
     body .steps .step-description {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.5;
       color: #39919f;
       font-weight: bold; }
       body .steps .step-description .step-number {
-        font-size: 25px; }
+        font-size: 25px;
+        padding: 5px; }
     body .steps .code {
       font-size: 14px;
       color: #4bc3d5;
@@ -587,6 +603,9 @@ body {
       body .setting-menu:hover .setting-submenu {
         display: block; }
 
+@media screen and (max-width: 1200px) {
+  body .steps .hexagon:nth-of-type(2) {
+    top: 0px; } }
 @media screen and (max-width: 996px) {
   header .nav-menu a span {
     display: none; }
@@ -594,7 +613,23 @@ body {
     padding: 0px; }
 
   header .logo {
-    max-width: 235px; } }
+    max-width: 235px; }
+
+  .home .slider1 li img {
+    width: 270px; } }
+@media screen and (max-width: 768px) {
+  header .logo {
+    max-width: 230px; }
+
+  .home .slider1 li {
+    width: 100%; }
+    .home .slider1 li.slide-title h3 {
+      font-size: 17px; }
+    .home .slider1 li img {
+      width: 270px; }
+
+  body .setting-menu {
+    margin: 25px; } }
 @media screen and (max-width: 480px) {
   header .nav-menu,
   header .logo,
@@ -606,6 +641,65 @@ body {
     margin: 0 auto; }
 
   header .nav-menu {
-    padding: 5px 0 30px; } }
+    padding: 5px 0 30px; }
+
+  .home .slider1 li img {
+    width: 150px; }
+  .home a.download-zip {
+    max-width: 200px;
+    font-size: 16px; }
+  .home .steps .hexagon {
+    width: 170px;
+    border-radius: 2em;
+    border: 2px solid #4bc3d5;
+    box-shadow: 0px 0px 5px 0px #000 inset; }
+    .home .steps .hexagon p {
+      font-size: 15px; }
+
+  .doc h3 {
+    font-size: 35px; }
+  .doc .doc-steps {
+    padding: 40px; }
+    .doc .doc-steps pre.code {
+      border: 2px solid #1f8695;
+      border-radius: 1em; }
+    .doc .doc-steps p, .doc .doc-steps pre.code {
+      font-size: 13px;
+      padding: 20px 5px; }
+  .doc .about-waslider {
+    font-size: 15px;
+    padding: 40px 20px; }
+  .doc .setting-menu {
+    border-radius: 2em;
+    border: 2px solid #4bc3d5;
+    box-shadow: 0px 0px 5px 0px #000 inset;
+    padding: 5px 25px; }
+    .doc .setting-menu h4,
+    .doc .setting-menu .setting-submenu li {
+      font-size: 15px; }
+
+  .download a {
+    padding: 20px;
+    font-size: 18px; }
+
+  .examples select,
+  .examples input {
+    border: 2px solid #1f8695; }
+  .examples label {
+    font-size: 15px; }
+  .examples input[name="create"],
+  .examples input[name="waturnof"] {
+    font-size: 18px; }
+  .examples .code {
+    box-shadow: 0px 0px 10px 5px #1f8695 inset; }
+    .examples .code h3 {
+      font-size: 35px; }
+    .examples .code pre {
+      font-size: 14px; } }
+@media screen and (max-width: 412px) {
+  .examples label {
+    padding: 10px 10px 0;
+    line-height: 2;
+    text-align: center; } }
 
 /*# sourceMappingURL=main.css.map */

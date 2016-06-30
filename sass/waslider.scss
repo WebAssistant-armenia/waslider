@@ -1,6 +1,4 @@
 .wa-showing-area {
-	width: 100%;
-	margin: 30px auto;	
 	.waSlider-arrow,.waSlider-slider{
 		float: left;
 	}
@@ -83,13 +81,6 @@
 	    	transition-property: all;
 	    	transition-timing-function: ease-in-out;
     	}
-
-    	&.hidden {
-    		img:not(:only-child){
-    			width: 0;
-    			height: 0;
-    		}
-    	}
     }
 }
 .wa-arrow {
@@ -101,7 +92,6 @@
     background: transparent;
     color: #777;
     cursor: pointer;
-    position: relative;
     box-shadow: 0px 0px 20px -5px #000;
     transition: all 1s;
     &:hover {

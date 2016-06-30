@@ -56,9 +56,9 @@
         }
     }
     .slider-example {
-        width: 660px;
+        width: 100%;
         li {
-            width: 200px;
+            width: 33%;
             height: 200px;
         }
     }
@@ -69,6 +69,7 @@
         box-sizing: border-box;
         box-shadow: 0px 0px 40px 10px #1f8695 inset;
         padding: 40px 5px 40px 40px;
+        font-size: 16px;
         letter-spacing: 1px;
         h3 {
             color: #1F86D3;
@@ -81,30 +82,50 @@
             text-align: left;
             color: #1F86D3;
         }
-    
-    ::-webkit-scrollbar {
-        width: 4px;
-    }
-    ::-webkit-scrollbar-track {
-       -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05);
-       border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {      
-           -webkit-box-shadow: inset -1px -1px 30px #4bc3d5; 
-       border-radius: 10px;
-           border: 5px solid rgba(244,244,244,0);
-    }
-    ::-moz-scrollbar {
-        width: 6px;
-    }
-    ::-moz-scrollbar-track {
-       -moz-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05);
-       border-radius: 10px;
-    }
-    ::-moz-scrollbar-thumb {      
-           -moz-box-shadow: inset -1px -1px 30px #4bc3d5; 
-       border-radius: 10px;
-           border: 5px solid rgba(244,244,244,0);
-    }
+        scrollbar {
+           -moz-appearance: none !important;
+           background: rgb(0,255,0) !important;
+        }
+        thumb,scrollbarbutton {
+           -moz-appearance: none !important;
+           background-color: rgb(0,0,255) !important;
+        }
+
+        thumb:hover,scrollbarbutton:hover {
+           -moz-appearance: none !important;
+           background-color: rgb(255,0,0) !important;
+        }
+
+        scrollbarbutton {
+           display: none !important;
+        }
+
+        scrollbar[orient="vertical"] {
+          min-width: 15px !important;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+           -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05);
+           border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {      
+            -webkit-box-shadow: inset -1px -1px 30px #4bc3d5; 
+            border-radius: 10px;
+            border: 5px solid rgba(244,244,244,0);
+        }
+        ::-moz-scrollbar {
+            width: 6px;
+        }
+        ::-moz-scrollbar-track {
+           -moz-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05);
+           border-radius: 10px;
+        }
+        ::-moz-scrollbar-thumb {      
+            -moz-box-shadow: inset -1px -1px 30px #4bc3d5; 
+            border-radius: 10px;
+            border: 5px solid rgba(244,244,244,0);
+        }
     }
 }

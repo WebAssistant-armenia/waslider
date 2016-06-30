@@ -14,7 +14,7 @@
                 width: 100%;
                 padding: 20px;
                 background: url(../images/armenia1.jpg) no-repeat;
-                background-size: 100%;
+                background-size: 100% 100%;
                 h3{
                     font-size: 60px;
                     color: #eee;
@@ -22,6 +22,7 @@
                 }
             }
             img {
+                width: 370px;
                 height: 160px;
                 transition: all 1s;
             }
